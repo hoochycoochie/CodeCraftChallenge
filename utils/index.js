@@ -1,14 +1,14 @@
 import { promises } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
 
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const { readFile, writeFile } = promises;
 
 export const savePlayers = async (players) => {
-  const jsonContent = JSON.stringify(players);
   try {
+    const jsonContent = JSON.stringify(players);
     await writeFile(
       path.join(__dirname, "../players.json"),
       jsonContent,
