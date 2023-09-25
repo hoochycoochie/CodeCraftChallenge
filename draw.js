@@ -8,7 +8,6 @@ export const draw = async () => {
 
     if (!playersNumber || playersNumber == 0) {
       console.error(`There are no players yet`);
-
       return false;
     }
     await inquirer.prompt([]);

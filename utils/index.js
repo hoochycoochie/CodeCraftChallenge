@@ -5,12 +5,13 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const { readFile, writeFile } = promises;
-
+const PLAYERS_RELATIVE_PATH = "../players.json";
+const MAX_RANDOM_NUMBER = 2600;
 export const savePlayers = async (players) => {
   try {
     const jsonContent = JSON.stringify(players);
     await writeFile(
-      path.join(__dirname, "../players.json"),
+      path.join(__dirname, PLAYERS_RELATIVE_PATH),
       jsonContent,
       "utf8"
     );
@@ -21,8 +22,8 @@ export const savePlayers = async (players) => {
 };
 export const readPlayers = async () => {
   try {
-    let rawdata = await readFile(path.join(__dirname, "../players.json"));
-    let players = JSON.parse(rawdata);
+    const rawdata = await readFile(path.join(__dirname, PLAYERS_RELATIVE_PATH));
+    const players = JSON.parse(rawdata);
     return players;
   } catch (error) {
     throw error;
@@ -30,7 +31,7 @@ export const readPlayers = async () => {
 };
 
 export const randomNumber = (players) => {
-  const random = Math.floor(Math.random() * 200);
+  const random = Math.floor(Math.random() * MAX_RANDOM_NUMBER);
   if (!players.length || players.length == 0) return random;
   const index = players.findIndex((p) => p.number == random);
   if (index != -1) return randomNumber(players);

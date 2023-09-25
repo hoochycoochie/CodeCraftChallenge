@@ -10,7 +10,7 @@ export const winners = async () => {
 
     if (playersNumber < minPlayersNumber) {
       console.error(
-        `Not enough players, minimum ${minPlayersNumber} players before lauching jackpot, we are waiting ${
+        `Not enough players, minimum ${minPlayersNumber} players before lauching jackpot, we are waiting  for ${
           minPlayersNumber - playersNumber
         } other player(s)`
       );
